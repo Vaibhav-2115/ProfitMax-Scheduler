@@ -67,19 +67,39 @@ This system uses an efficient **Greedy Algorithm** to maximize revenue.
 # 🏗 System Architecture
 
 ```
-User Input
-   │
-   ▼
-Java Application
-   │
-   ▼
-Greedy Scheduling Algorithm
-   │
-   ▼
-PostgreSQL Database
-   │
-   ▼
-Optimized Project Schedule
+START
+  ↓
+Fetch projects from database
+  ↓
+Sort projects by revenue and deadline
+  ↓
+Initialize:
+  usedDays[5]
+  bestSchedule
+  maxProfit = 0
+  ↓
+Call backtrack()
+  ↓
+FOR each project
+    ↓
+    Try assigning project to valid day
+        ↓
+        If assigned:
+            Add revenue
+            Mark day used
+            Call backtrack()
+            Undo assignment (Backtrack)
+    ↓
+    Try skipping project
+  ↓
+Compare profit with maxProfit
+  ↓
+Store best schedule
+  ↓
+END
+  ↓
+Return bestSchedule
+
 ```
 ---
 # 🚀 Key Features

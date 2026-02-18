@@ -46,25 +46,31 @@ This system uses an efficient **Greedy Algorithm** to maximize revenue.
 5. ❌ If slot unavailable → Skip project
 6. 🔁 Repeat until schedule is full
 ---
-# 📈 Why Greedy Algorithm?
-✔ Maximizes profit
-✔ Ensures deadline compliance
-✔ Efficient and optimal scheduling
-✔ Time Complexity: **O(n log n)**
----
-# 🛠️ Tech Stack
-### Backend
-* ☕ Java
-* 🔗 JDBC (Database Connectivity)
+📈 Why Backtracking Algorithm?
 
-### Database
-* 🐘 PostgreSQL 18
-* 🛠 pgAdmin
-### Tools
-* IntelliJ IDEA
-* Git & GitHub
----
-# 🏗 System Architecture
+✔ Guarantees maximum profit by exploring all possible schedules
+✔ Ensures deadline compliance for every project
+✔ Provides optimal scheduling under strict constraints
+✔ Considers both selecting and skipping projects
+✔ Finds the best possible solution (Optimal Solution)
+
+✔ Time Complexity: O(2ⁿ)
+
+🛠 Tech Stack
+Backend
+
+• ☕ Java
+• 🔗 JDBC (Database Connectivity)
+
+Database
+
+• 🐘 PostgreSQL 18
+• 🛠 pgAdmin
+
+Tools
+
+• 💡 IntelliJ IDEA
+• 🌐 Git & GitHub
 
 ```
 START

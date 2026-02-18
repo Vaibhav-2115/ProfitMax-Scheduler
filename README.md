@@ -76,7 +76,7 @@ Time Complexity: O(2ⁿ)
 
 
 ---
-# 🔄 Scheduling Flow
+## 🔄 Scheduling Flow
 
 START
   ↓
@@ -92,26 +92,25 @@ Initialize:
 Call backtrack()
   ↓
 FOR each project
-    ↓
-    Try assigning project to valid day
-        ↓
-        If assigned:
-            Add revenue
-            Mark day used
-            Call backtrack()
-            Undo assignment (Backtrack)
-    ↓
-    Try skipping project
+  ↓
+Try assigning project to valid day
+  ↓
+If assigned:
+  Add revenue
+  Mark day used
+  Call backtrack()
+  Undo assignment (Backtrack)
+  ↓
+Try skipping project
   ↓
 Compare profit with maxProfit
   ↓
-Store best schedule
+Store bestSchedule
   ↓
 END
   ↓
 Return bestSchedule
-
----
+```
 
 
 # 🚀 Key Features

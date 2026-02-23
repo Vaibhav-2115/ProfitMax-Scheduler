@@ -1,6 +1,6 @@
 # 💼 ProfitMax Scheduler Solutions – Smart Project Scheduling System
 
-🚀 A profit-optimized project scheduling system built using Java, JDBC, and PostgreSQL, designed to automatically select and schedule client projects for maximum revenue using a Backtracking Algorithm.
+🚀 A profit-optimized project scheduling system built using Java, JDBC, and PostgreSQL, designed to automatically select and schedule client projects for maximum revenue using a Greedy Scheduling Algorithm.
 
 ---
 
@@ -12,8 +12,9 @@ ProfitMax Scheduler Solutions Pvt. Ltd. is a project management company that han
 • 💻 Software Development  
 • 🧪 Testing & QA  
 • 🚀 Deployment  
+• ☁ Cloud Integration  
 
-This system automates project scheduling using a Backtracking algorithm to ensure maximum profit while respecting deadlines and business constraints.
+This system automates project scheduling using a Greedy algorithm to ensure maximum profit while respecting deadlines and business constraints.
 
 ---
 
@@ -34,8 +35,10 @@ Each project contains:
 
 • 🆔 Project ID – Auto-generated unique identifier  
 • 📌 Title – Name of the project  
-• ⏳ Deadline – Completion deadline (in working days)  
+• 📅 Submission Day – Day project was assigned  
+• ⏳ Deadline – Completion deadline (in days)  
 • 💰 Expected Revenue – Profit earned if completed on time  
+• ⌛ Remaining Deadline – Dynamically calculated  
 
 Example:
 
@@ -43,36 +46,48 @@ Project Title: Mobile App UI Design
 Deadline: 3 days  
 Revenue: ₹50,000  
 
-Must be scheduled within the first 3 working days to earn profit.
+Must be scheduled within the deadline to earn profit.
 
 ---
 
-# 🧠 Algorithm Used – Backtracking Strategy
+# 🧠 Algorithm Used – Greedy Scheduling Strategy
 
-This system uses a Backtracking Algorithm to guarantee the optimal scheduling solution by exploring all possible project combinations.
+This system uses a Greedy Algorithm to generate the optimal schedule efficiently.
+
+Instead of exploring all combinations, the Greedy approach selects the best projects first based on priority.
 
 Algorithm Steps:
 
 1. Fetch all projects from PostgreSQL database  
-2. Sort projects based on revenue (descending) and deadline (ascending)  
-3. Start recursive backtracking process  
-4. Try assigning each project to valid days before its deadline  
-5. Add revenue and track profit  
-6. Backtrack and try other combinations  
-7. Compare and store maximum profit schedule  
-8. Return optimal schedule  
+2. Calculate remaining deadline for each project  
+3. Categorize projects into:
+   - Schedulable Projects  
+   - Missed Projects (deadline expired)  
+   - Future Projects (deadline still available)  
+4. Sort schedulable projects based on:
+   - Earliest deadline first  
+   - Highest revenue second  
+5. Assign projects to available working days  
+6. Calculate total profit  
+7. Display optimal schedule  
+8. Display missed and future projects  
 
 ---
 
-# 📈 Why Backtracking Algorithm?
+# 📈 Why Greedy Algorithm?
 
-✔ Guarantees maximum profit  
+✔ Fast and efficient scheduling  
+✔ Maximizes profit effectively  
 ✔ Ensures deadline compliance  
-✔ Explores all possible scheduling combinations  
-✔ Provides optimal solution under strict constraints  
-✔ Considers both selecting and skipping projects  
+✔ Works well for real-world scheduling systems  
+✔ Handles large number of projects efficiently  
 
-Time Complexity: O(2ⁿ)
+Time Complexity: O(n log n)
+
+---
+
+## 🔄 Scheduling Flow
+
 
 
 ---
@@ -80,48 +95,46 @@ Time Complexity: O(2ⁿ)
 
 ```
 START
-  ↓
+↓
 Fetch projects from database
-  ↓
-Sort projects by revenue and deadline
-  ↓
-Initialize:
-  usedDays[5]
-  bestSchedule
-  maxProfit = 0
-  ↓
-Call backtrack()
-  ↓
-FOR each project
-  ↓
-Try assigning project to valid day
-  ↓
-If assigned:
-  Add revenue
-  Mark day used
-  Call backtrack()
-  Undo assignment (Backtrack)
-  ↓
-Try skipping project
-  ↓
-Compare profit with maxProfit
-  ↓
-Store bestSchedule
-  ↓
+↓
+Calculate remaining deadline
+↓
+Categorize projects:
+• Schedulable
+• Missed
+• Future
+↓
+Sort schedulable projects:
+Deadline ↑
+Revenue ↓
+↓
+Assign projects to available days
+↓
+Calculate total profit
+↓
+Display schedule
+↓
+Display missed projects (expired deadline)
+↓
+Display future projects (remaining deadline)
+↓
 END
-  ↓
-Return bestSchedule
 ```
 
+
+
+---
 
 # 🚀 Key Features
 
 • Automated project scheduling  
 • Maximum profit optimization  
-• Backtracking algorithm implementation  
+• Greedy algorithm implementation  
 • PostgreSQL database integration  
 • Dynamic project management  
-• Real-world constraint handling  
+• Missed project detection  
+• Future project tracking  
 • Optimal schedule generation  
 
 ---
@@ -138,16 +151,25 @@ Day 5 → Deployment → ₹30,000
 
 Total Profit: ₹260,000  
 
+Missed Projects:
+
+Software Testing and QA → Deadline Missed (expired: -2 days)
+
+Future Projects:
+
+Cloud Deployment → Remaining Deadline: 9 days  
+Database Optimization → Remaining Deadline: 12 days  
+
 ---
 
 # 🎓 Learning Outcomes
 
-• Backtracking Algorithm implementation  
-• Recursive problem solving  
-• Non-Greedy optimization technique  
+• Greedy Algorithm implementation  
+• Profit optimization techniques  
+• Deadline-based scheduling  
 • JDBC database connectivity  
 • Real-world scheduling system design  
-• Profit optimization techniques  
+• Database-driven application development  
 
 ---
 
